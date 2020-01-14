@@ -39,7 +39,7 @@ steps:
       pathToSources: '$(System.DefaultWorkingDirectory)/**/**/src/main/java/'
       reportDirectory: '$(System.DefaultWorkingDirectory)/**/**/site/cobertura'
 
-- task: SonarQubeAnalyze@4
+
 
 - task: ArchiveFiles@2
   inputs:
@@ -62,3 +62,4 @@ steps:
     artifact: 'calc'
     publishLocation: 'pipeline'
     
+- task: SonarQubeAnalyze@4
