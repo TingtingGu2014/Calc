@@ -24,8 +24,7 @@ steps:
   
 - task: PublishCodeCoverageResults@1
   inputs:
-      codeCoverageTool: 'JaCoCo'
+      codeCoverageTool: 'Cobertura'
       summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/**/site/cobertura/coverage.xml'
       pathToSources: '$(System.DefaultWorkingDirectory)/**/**/src/main/java/'
       reportDirectory: '$(System.DefaultWorkingDirectory)/**/**/site/cobertura'
-      additionalCodeCoverageFiles: '$(System.DefaultWorkingDirectory)/**/**/site/cobertura'
