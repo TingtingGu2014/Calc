@@ -2,6 +2,8 @@ package com.kavinschool.calc;
 
 public class Calc {
 	private double x, y;
+	private String df;
+	private String str;
 
 	Calc(double a, double b) {
 		x = a;
@@ -40,4 +42,9 @@ public class Calc {
 		return (int)x ^ (int)y;
 	}
 
+	/*
+	String gert(){
+	return df + str;
+	}
+	*/
 }
