@@ -1,7 +1,6 @@
 # Maven
-# Build your Java project and run tests with Apache Maven.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/java
+
+
 
 trigger:
 - master
@@ -10,6 +9,17 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+
+- task: SonarQubePrepare@4
+  inputs:
+    SonarQube: 'SonarConnection'
+    scannerMode: 'CLI'
+    configMode: 'manual'
+    cliProjectKey: 'tingting'
+    cliProjectName: 'tingting'
+    cliSources: '.'
+
+
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
@@ -28,6 +38,8 @@ steps:
       summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/**/site/cobertura/coverage.xml'
       pathToSources: '$(System.DefaultWorkingDirectory)/**/**/src/main/java/'
       reportDirectory: '$(System.DefaultWorkingDirectory)/**/**/site/cobertura'
+
+- task: SonarQubeAnalyze@4
 
 - task: ArchiveFiles@2
   inputs:
